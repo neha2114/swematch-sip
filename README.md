@@ -14,3 +14,4 @@ git push
 Then go to the repo on github, and there should be a green button to "create a pull request":
 check for merge conflicts first, then ask me to review it, and then the changes will be pushed into the main branch
 Hi, this is anika learning git from neha lol
+hi this is sneha :)
