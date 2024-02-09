@@ -7,14 +7,7 @@ def hello_world():
  
 @app.route('/home/')
 def home_world():
-    import home
-    return home.home_page()
+    return 'Homepage'
  
-@app.route('/stats/')
-def stat_page():
-    import stats
-    return stats.stats_page()
-
 if __name__ == '__main__':
     app.run()
-
