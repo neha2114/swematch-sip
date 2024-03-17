@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Bottle</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: "Literata", sans-serif;
+            margin: 0; /* Reset margin */
+            padding: 0; /* Reset padding */
+        }
+        h1, h2, h3 {
+            letter-spacing: 6%; /* Apply letter spacing to all headings */
+        }
+        h1 {
+            font-size: 36px;
+            color: #17A7C1;
+            margin: 5px 0; /* Adjust margin */
+        }
+        h2 {
+            font-size: 24px;
+            margin: 20px 0; /* Adjust margin */
+        }
+        h3 {
+            font-size: 18px;
+            margin: 5px 0; /* Adjust margin */
+        }
+        .water-bottle {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            position: relative;
+        }
+        .water-level {
+            position: absolute;
+            bottom: 38%;
+            left: 18%;
+            width: 63%;
+            height: auto;
+            z-index: 1;
+        }
+        .hydration-goal {
+            color: #17A7C1;
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata&display=swap">
+</head>
+<body>
+    <h2 style="padding-top: 10%">Today, you reached</h2>
+    <h1> {{ oz_drank }} oz</h1>
+    <div style="position: relative;">
+        <img src="{{ url_for('static', filename=water_level_image) }}" alt="Water Bottle" class="water-bottle">
+    </div>
+    <h3><strong><span class="hydration-goal">{{ amount_drank }}%</span> of hydration goal</strong></h3>
+    <h3 style="padding-left: 20%; padding-right:20%; padding-top:4%;"> Based on your statistics, your recommended water intake is <span class="hydration-goal">1 gallon!</span></h3>
+</body>
+</html>
