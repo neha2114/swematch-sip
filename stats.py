@@ -20,6 +20,11 @@ def stats_page():
                    animation_group=days,
                    range_y=[0,64])
     
+    graph.update_layout(
+        plot_bgcolor='#FEF8F8'
+    )
+    
+    
     graphJSON = json.dumps(graph, cls =plotly.utils.PlotlyJSONEncoder)
     
     return render_template("layout.html", graphJSON=graphJSON)
