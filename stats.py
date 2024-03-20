@@ -16,8 +16,6 @@ def stats_page():
 
     graph = px.bar(df, x=days, y=water
                    , color_discrete_sequence=['#17A7C1']*len(df),
-                   animation_frame=days,
-                   animation_group=days,
                    range_y=[0,64])
     
     graph.update_layout(
