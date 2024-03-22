@@ -16,12 +16,17 @@ def stats_page():
 
     graph = px.bar(df, x=days, y=water
                    , color_discrete_sequence=['#17A7C1']*len(df),
+                   width=1000, height=750,
                    range_y=[0,64])
     
     graph.update_layout(
-        plot_bgcolor='#FEF8F8'
+        plot_bgcolor='#FEF8F8',
+        font=dict(
+            family="Literata",
+            size=24,  # Set the font size here
+            
+        )
     )
-    
     
     graphJSON = json.dumps(graph, cls =plotly.utils.PlotlyJSONEncoder)
     

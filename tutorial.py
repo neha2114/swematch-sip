@@ -11,10 +11,10 @@ def home_world():
     return home.home_page()
 
 
-@app.route('/stats')
+@app.route('/stats/')
 def stats_page():
     import stats
     return stats.stats_page()
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
