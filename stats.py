@@ -7,11 +7,11 @@ import plotly.express as px
 def stats_page():
 
     df = pd.DataFrame({
-        "Days": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "Day": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
         "Water Intake": [64, 36, 50, 45, 30, 19, 61]
     })
 
-    days = df['Days']
+    days = df['Day']
     water = df['Water Intake']
 
     graph = px.bar(df, x=days, y=water

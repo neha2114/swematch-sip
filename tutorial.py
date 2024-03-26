@@ -2,8 +2,9 @@ from flask import Flask
 app = Flask(__name__)
  
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def loading_page():
+    import loadingpage
+    return loadingpage.load_page()
  
 @app.route('/home/')
 def home_world():
