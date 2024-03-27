@@ -23,8 +23,7 @@ def stats_page():
         plot_bgcolor='#FEF8F8',
         font=dict(
             family="Literata",
-            size=24,  # Set the font size here
-            
+            size=24,  # Set the font size here   
         )
     )
     
@@ -35,5 +34,7 @@ def stats_page():
 if __name__ == '__main__':
     # Run the home page logic if the file is executed directly
     print(stats_page())
+    
+#color:linear-gradient(to bottom, #17a7c1, #1f93a8, #227f8f, #246c78, #235962)
     
 #https://www.youtube.com/watch?v=B97qWOUvlnU
