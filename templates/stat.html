@@ -1,0 +1,14 @@
+{% block content %}
+    <h1 style="text-align: center">{% block title %} Statistics Page For You {% endblock %}</h1>
+    <hr />
+    <div class="titles" style="clear: both">
+        <h2 style="float: left">Weight Reading</h2>
+        <h2 style="float: right">Time</h2>
+    </div>
+    {% for weight in weights %}
+        <div class="readings" style="clear: both">
+            <h2 style="float: left">{{ weights[weight]["reading"] }}</h2>
+            <h2 style="float: right">{{ weights[weight]["time"] }}</h2>
+        </div>
+    {% endfor %}
+{% endblock %}
