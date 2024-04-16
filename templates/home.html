@@ -35,9 +35,8 @@
         opacity: 80%;
     }
     .percentage {
-        width: 100%;
         margin-top: 10%;
-
+        width: 100%;
     }
     .water-fact {
         margin: 2%;
@@ -63,10 +62,12 @@
     <img src="/static/images/drinking_water.png" class="water-img"> 
     <div class="water-fact">
         Did you know that two-thirds of our body weight consists of water?
-        <button class="dailyintakebtn"> view your weekly intake </button>
+        <button class="dailyintakebtn"><a href="stats.py" style="text-decoration: none; color: white;">view your weekly intake</a></button>
+        # change link to stats page here ^ 
+
     </div>
 </div>
-<img src="/static/images/ring_example.png" class="percentage">
+<img src="data:image/png;base64,{{ plot_data }}" alt="Pie Chart" class ="percentage">
 <h3> Highlights</h3>
 <div class="box1">
     <div class="box2"></div>
