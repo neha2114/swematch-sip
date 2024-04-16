@@ -1,62 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Water Bottle</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-family: "Literata", sans-serif;
-            margin: 0; /* Reset margin */
-            padding: 0; /* Reset padding */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Page</title>
+<style>
+    .box {
+        margin-top: 10%;
+        height: 155px;
+        background-color: #EDF3F9;
+        border-radius: 4px;
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+        display: flex;
         }
-        h1, h2, h3 {
-            letter-spacing: 6%; /* Apply letter spacing to all headings */
-        }
-        h1 {
-            font-size: 36px;
-            color: #17A7C1;
-            margin: 5px 0; /* Adjust margin */
-        }
-        h2 {
-            font-size: 24px;
-            margin: 20px 0; /* Adjust margin */
-        }
-        h3 {
-            font-size: 18px;
-            margin: 5px 0; /* Adjust margin */
-        }
-        .water-bottle {
-            width: auto;
-            max-width: 100%;
-            height: auto;
-            position: relative;
-        }
-        .water-level {
-            position: absolute;
-            bottom: 38%;
-            left: 18%;
-            width: 63%;
-            height: auto;
-            z-index: 1;
-        }
-        .hydration-goal {
-            color: #17A7C1;
-        }
-    </style>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata&display=swap">
+    .box1 {
+        height: 155px;
+        background-color: #EDF3F9;
+        border-radius: 4px;
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+        display: flex;
+    }
+    .water-img {
+        width: 45%;
+        position: relative;
+    }
+    .box2 {
+        margin: 3%;
+        width: 125px;
+        height: 125px;
+        background-color: #4D7495;
+        border-radius: 4px;
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+        display: flex;
+        opacity: 80%;
+    }
+    .percentage {
+        width: 100%;
+        margin-top: 10%;
+
+    }
+    .water-fact {
+        margin: 2%;
+        margin-top: 5%;
+        margin-top:5%;
+        letter-spacing: 1px;
+        color: #516F89;
+    }
+    .dailyintakebtn {
+        width: 100%;
+        height: 30px;
+        background-color: #516F89;
+        color: white;
+        margin: 2%;
+        letter-spacing: 1px;
+    }
+
+</style>
 </head>
 <body>
-    <h2 style="padding-top: 10%">Today, you reached</h2>
-    <h1> {{ oz_drank }} oz</h1>
-    <div style="position: relative;">
-        <img src="{{ url_for('static', filename=water_level_image) }}" alt="Water Bottle" class="water-bottle">
+<div/>
+<div class="box"> 
+    <img src="/static/images/drinking_water.png" class="water-img"> 
+    <div class="water-fact">
+        Did you know that two-thirds of our body weight consists of water?
+        <button class="dailyintakebtn"> view your weekly intake </button>
     </div>
-    <h3><strong><span class="hydration-goal">{{ amount_drank }}%</span> of hydration goal</strong></h3>
-    <h3 style="padding-left: 20%; padding-right:20%; padding-top:4%;"> Based on your statistics, your recommended water intake is <span class="hydration-goal">1 gallon!</span></h3>
+</div>
+<img src="/static/images/ring_example.png" class="percentage">
+<h3> Highlights</h3>
+<div class="box1">
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+</div>
+
+
 </body>
 </html>
