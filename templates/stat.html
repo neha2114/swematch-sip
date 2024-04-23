@@ -4,7 +4,9 @@
    <meta charset="utf-8">
  </head>
  <body>
- 
+    {% for w in weights %}
+        <h2> {{ weights[w]}} </h2>
+    {% endfor %}
    <div>
      <canvas id="myChart" width="200" height="200"></canvas>
    </div>

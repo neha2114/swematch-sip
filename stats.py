@@ -8,7 +8,8 @@ firebase = firebase.FirebaseApplication('https://test1-f1e04-default-rtdb.fireba
 # this function is passed to tutorial.py (main page)
 def stats_page():
     # Logic for the stats page
-    result = firebase.get('/weights', None)
+    result1 = firebase.get('/Status', None)
+    #result = firebase.get('/weights', None)
 
     # Define Plot Data 
     labels = [
@@ -23,7 +24,7 @@ def stats_page():
     data = [0, 10, 15, 8, 22, 18, 25]
  
     # Return the components to the HTML template 
-    return render_template('stat.html')
+    return render_template('stat.html', weights=result1)
     #return render_template('stat.html', weights=result)
     #return 'Stats Page' + str(result)
 
