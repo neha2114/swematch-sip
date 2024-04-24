@@ -1,16 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Sip - Weekly Stats</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="calendar, events, reminders, javascript, html, css, open source coding"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Stats</title>
 </head>
-<body style="background-color:#FEF8F8">
-    <h1 style="font-family:literata; color:#17A7C1; text-align:center";> Weekly Stats </h1>
-    <div id="chart" class="chart" style="align:center">
+<body>
+    <div>
+        <canvas id="myChart" width="1000" height="1000"></canvas>
     </div>
-</body>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script type="text/javascript">
-    var graphs = {{graphJSON | safe}};
-    Plotly.plot('chart',graphs,{});        
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    var my_gradient = ctx.createLinearGradient(0, 0, 0, 2000);
+    my_gradient.addColorStop(0, 'rgb(77, 116, 149)');
+    my_gradient.addColorStop(1, 'rgb(237, 243, 249)');
+
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {{labels | safe}},
+            datasets: [
+                {
+                    label: "Water Intake Stats",
+                    data: {{values | safe}},
+                    backgroundColor: my_gradient,
+                    borderWidth: 1,
+                    borderRadius: 20,
+                    borderSkipped: false,
+                    barPercentage: 0.7
+                }
+            ]
+        },
+        options: {
+            responsive: false,
+            plugins: {
+              title: {
+                  display: true,
+                  text: 'Weekly Stats', // Chart title
+                  color: '#516F89',
+                  font: {
+                      weight: 'bold',
+                      size: 24
+                  },
+              },
+          },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Day'
+                    },
+                    beginAtZero: true
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Water Intake (oz)'
+                    },
+                    beginAtZero: true
+                }
+            }
+        }
+
+    });
 </script>
+
+<div class="container">
+    <div class="left">
+      <div class="calendar">
+        <div class="month">
+          <i class="fa fa-angle-left prev"></i>
+          <div class="date">April 2024</div>
+          <i class="fa fa-angle-right next"></i>
+        </div>
+        <div class="weekdays">
+          <div>Sun</div>
+          <div>Mon</div>
+          <div>Tue</div>
+          <div>Wed</div>
+          <div>Thu</div>
+          <div>Fri</div>
+          <div>Sat</div>
+        </div>
+        <div class="days"></div>
+        <div class="goto-today">
+          <div class="goto">
+            <input type="text" placeholder="mm/yyyy" class="date-input" />
+            <button class="goto-btn">Go</button>
+          </div>
+          <button class="today-btn">Today</button>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="today-date">
+        <div class="event-day">wed</div>
+        <div class="event-date">12th december 2022</div>
+        <div class="amount-drank">0 oz</div>
+      </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
 </html>

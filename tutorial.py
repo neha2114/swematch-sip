@@ -3,8 +3,7 @@ app = Flask(__name__)
  
 @app.route('/')
 def loading_page():
-    import loadingpage
-    return loadingpage.load_page()
+    return 'Hi'
  
 @app.route('/home/')
 def home_world():
