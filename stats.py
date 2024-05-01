@@ -2,32 +2,33 @@ from flask import render_template, url_for
 from firebase import firebase
 import pandas as pd
 import json
-import plotly
-import plotly.express as px
 
-firebaseapp = firebase.FirebaseApplication('https://test1-1ab25-default-rtdb.firebaseio.com', None)
-#firebaseapp = firebase.FirebaseApplication('https://test1-f1e04-default-rtdb.firebaseio.com/')
+#firebaseapp = firebase.FirebaseApplication('https://test1-1ab25-default-rtdb.firebaseio.com', None)
+firebaseapp = firebase.FirebaseApplication('https://test1-f1e04-default-rtdb.firebaseio.com/')
 def stats_page():
-    data = firebaseapp.get("/weights", None)
-    #print(data)
-    pddata = {"ts": [], "reading":[]}
-    for item in data:
-       pddata["reading"].append( item["reading"])
-       pddata["ts"].append(item["ts"])
+    data = firebaseapp.get("/Status", None)
+    print(data)
+    
+    pddata = {"Weight": []}
+    for item, val in data.items():
+        if 'Weight' in val:
+            pddata["Weight"].append(val["Weight"])
     df = pd.DataFrame(data=pddata)
+    
     totalc = 0
     
     days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     values = []
     
-    #for index, row in df.iterrows():
-    #  print(row['reading'])
-    
-    for i in range(0, len(df), 100):
-        curr_day = df.iloc[i:i+100]
+    for i in range(0, 69, 10):
+        curr_day = df.iloc[i:i+10]
         for j in range(len(curr_day)-1):
-            current_value = curr_day.iloc[j]['reading']
-            next_value = curr_day.iloc[j+1]['reading']
+            current_value = curr_day.iloc[j]['Weight']
+            if(current_value < 0):
+                current_value = abs(current_value)
+            next_value = curr_day.iloc[j+1]['Weight']
+            if(next_value < 0):
+                next_value = abs(current_value)
             
             if(current_value > next_value):
                 difference = current_value - next_value
@@ -35,6 +36,7 @@ def stats_page():
                 
         values.append(totalc)   
         totalc = 0
+    
     return render_template("layout.html", labels=days, values=values)
 
 

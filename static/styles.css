@@ -254,3 +254,17 @@
     text-align: center;
   }
   
+  .banner {
+    background-color: var(--primary-clr);
+    height: 150px;
+    padding: 20px;
+    margin-top: 100px;
+  }
+  h1 {
+    color: #EDF3F9;
+    text-align: center;
+  }
+  img {
+    align-items: left;
+    margin: 0 auto;
+  }
