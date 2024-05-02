@@ -3,7 +3,7 @@ app = Flask(__name__)
  
 @app.route('/')
 def loading_page():
-    return render_template("profile.html")
+    return render_template("calc.html")
  
 @app.route('/home/')
 def home_world():

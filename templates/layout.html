@@ -19,12 +19,32 @@
     <title>Stats</title>
 </head>
 <body>
+  <nav>
+    <a href="/home">Home</a>
+    <a href="/stats">Stats</a>
+    <a href="/">Profile</a>
+</nav>
     <div>
         <canvas id="myChart" width="1000" height="1000"></canvas>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
+
+    const data = {{data | tojson}};
+    const labels = [];
+    const  values = [];
+
+    for (let i=0; i< data.length; i++) {
+      const date = data[i].dt;
+      labels.push(date);
+    }
+
+  
+    for (let i=0; i< data.length; i++) {
+      const val = data[i].total;
+      values.push(val);
+    } 
     const ctx = document.getElementById('myChart').getContext('2d');
     var my_gradient = ctx.createLinearGradient(0, 0, 0, 2000);
     my_gradient.addColorStop(0, 'rgb(77, 116, 149)');
@@ -33,11 +53,11 @@
     const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: {{labels | safe}},
+            labels: labels,
             datasets: [
                 {
                     label: "Water Intake Stats",
-                    data: {{values | safe}},
+                    data: values,
                     backgroundColor: my_gradient,
                     borderWidth: 1,
                     borderRadius: 20,
@@ -111,7 +131,7 @@
       <div class="today-date">
         <div class="event-day">wed</div>
         <div class="event-date">12th december 2022</div>
-        <div class="amount-drank">0 oz</div>
+        <div class="amount-drank">{{total}} oz</div>
       </div>
     </div>
     <script src="/static/script.js"></script>
