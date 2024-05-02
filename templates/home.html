@@ -4,175 +4,196 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SIP - Home</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-    body {
+    /* Resetting default margin and padding */
+    * {
         margin: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-size: cover;
-        background-repeat: no-repeat;
-        color: #333;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
     }
+    /* Global styles */
+    body {
+        background-image: url('https://garden.spoonflower.com/c/16865301/p/f/m/yEfdunHOjudE0nulw4Wb5IMqVmtT8aObF7M0VQrXDz9X0AryVUvm/Soft%20Pale%20Blue%20Solid%20Plain%20Colour.jpg');
+        background-size: cover;
+        background-position: center;
+        color: #333;
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    /* Header styles */
     header {
         background-color: #4D7495;
-        padding: 20px;
         color: white;
-        width: 100%;
+        padding: 20px 0;
         text-align: center;
     }
+    /* Navigation styles */
     nav {
         background-color: rgba(255, 255, 255, 0.8);
-        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
     }
     nav a {
-        float: left;
-        display: block;
         color: #333;
         text-align: center;
-        padding: 14px 20px;
+        padding: 10px 20px;
         text-decoration: none;
         font-size: 18px;
     }
     nav a:hover {
         background-color: rgba(0, 0, 0, 0.1);
     }
+    /* Container styles */
     .container {
-        margin: 20px auto;
         max-width: 90%;
-        padding: 0 20px;
+        margin: auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
-    .box {
+    /* Box styles */
+    .box, .waterbox {
+        background-color: white;
         border-radius: 8px;
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
         padding: 20px;
-        margin-bottom: 20px;
+        margin: 2% auto;
+        width: 80%;
     }
-
+    /* Waterbox styles */
     .waterbox {
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Center horizontally */
-        justify-content: center; /* Center vertically */
-        padding: 20px;
-        margin-bottom: 20px;
+        width: 80%;
     }
-
-    .water-fact {
-        margin-top: 20px;
-        margin-bottom: 5px;
-        /* background-color: #EDF3F9; */
+    /* Image styles */
+    .water-img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 8px;
     }
-
-    .dailyintakebtn {
+    /* Footer styles */
+    footer {
         background-color: #4D7495;
         color: white;
-        border: none;
-        padding: 10px 20px;
         text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
+        padding: 20px 0;
+        margin-top: auto; /* Keeps the footer at the bottom */
+    }
+    /* Text block styles */
+    .text-block {
+        text-align: center;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #4D7495;
+        color: white;
+        border-radius: 8px;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+    .dailyintakebtn {
+        display: inline-block; /* Makes the element a block while keeping it inline */
+        padding: 10px 20px;
+        margin: 10px 0; /* Adds spacing around the button */
+        background-color: #4D7495;
+        color: white;
+        text-decoration: none; /* Removes underline from links */
+        text-align: center;
         border-radius: 4px;
+        border: none;
         cursor: pointer;
         transition: background-color 0.3s;
+    }
+
+    .dailyintakebtn:hover {
+        background-color: #516F89;
+    }
+
+
+    .percentage {
+        display: block; /* Makes the image a block element */
+        margin: 20px auto; /* Centers the image horizontally and adds vertical spacing */
+        max-width: 400px; /* Restricting image size for consistency */
     }
     .dailyintakebtn:hover {
         background-color: #516F89;
     }
-    .percentage {
-        width: 100%;
-        max-width: 600px;
-        margin: 20px auto;
-        display: block;
-        border-radius: 4px;
-        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+
+    h2, h3 {
+        color: #4D7495;
     }
-    .box2 {
-        background-color: #4D7495;
-        color: white;
-        border-radius: 8px;
-        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        margin: 10px;
-        text-align: center;
+    /* About SIP section */
+    .about-sip p {
+        font-size: 16px; /* Adjusts font size for better readability */
+        line-height: 1.6; /* Increases line spacing */
+        color: #333; /* Sets a darker color for better contrast */
+        padding: 10px; /* Adds padding around the text */
     }
-    .val {
-        font-size: 3em;
+    .about-sip p, .about-sip ul {
+        margin-bottom: 10px;
+    }
+
+    .text-content {
+    flex: 1;  /* Allows each block to take equal space */
+    padding: 0 20px;  /* Padding for spacing between the number and text */
+}
+
+    .number {
+        font-size: 24px;  /* Larger font for the number */
         font-weight: bold;
     }
-    .random {
-        font-size: 1.2em;
+
+    .description {
+        font-size: 16px;  /* Smaller font for the description */
     }
-    .head {
-        width: 100%;
-    }
-    .content {
-        margin-top: 20px;
-        text-align: justify;
-    }
-    .placeholder {
-        background-color: rgba(255, 255, 255, 0.9);
-        border-radius: 8px;
-        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-    h2 {
-        color: #4D7495;
-        margin-top: 10%;
-    }
-    h3 {
-        color: #516F89;
-    }
-    .water-img {
-        width: 30%;
-    }
+
 </style>
 </head>
 <body>
 <nav>
-    <a href="#" class="active">Home</a>
-    <a href="#">Stats</a>
-    <a href="#">Settings</a>
+    <a href="/home">Home</a>
+    <a href="/stats">Stats</a>
+    <a href="/profile">Profile</a>
 </nav>
-<header> 
-    <div class="head">
-        <img src="/static/images/SIP.png" alt="SIP Logo">
-    </div>
+<header>
+    <img src="/static/images/SIP.png" alt="SIP Logo">
 </header>
 
 <div class="container">
-    <div class="content">
-        <h2>About SIP</h2>
-        <div class="box">
-        <p>Welcome to SIP – your dedicated companion for achieving optimal wellness through hydration. At SIP, we're passionate about empowering you to lead a healthier lifestyle by making hydration effortless and enjoyable. Our innovative Automatic Water Tracking feature revolutionizes the way you monitor your water intake, ensuring you stay hydrated throughout the day without the hassle. With SIP, you can track your progress effortlessly, allowing you to focus on what matters most – your well-being. Our mission is simple: to integrate hydration seamlessly into your daily routine. Whether you're a professional athlete pushing your limits or an individual committed to enhancing your health, SIP is here to support you every step of the way. Stay tuned as we continue to evolve and introduce exciting updates and features, designed to further enhance your journey to better health with SIP.</p>
-        </div>
+    <h2>About SIP</h2>
+    <div class="box about-sip">
+        <p>Welcome to SIP – your dedicated companion for achieving optimal wellness through hydration. We're passionate about empowering you to lead a healthier lifestyle by making hydration effortless and enjoyable. Our innovative Automatic Water Tracking feature revolutionizes the way you monitor your water intake, ensuring you stay hydrated throughout the day without the hassle. With SIP, you can track your progress effortlessly, allowing you to focus on what matters most – your well-being. Whether you're a professional athlete pushing your limits or an individual committed to enhancing your health, SIP is here to support you every step of the way. Stay tuned as we continue to evolve and introduce exciting updates and features, designed to further enhance your journey to better health with SIP.</p>
     </div>
 
-    <div class="waterbox"> 
+    <div class="waterbox">
+        <h2>Weekly Intake</h2> 
         <img src="https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg" class="water-img" alt="Drinking Water Image"> 
-        <div class="water-fact">
-            Did you know that two-thirds of our body weight consists of water? 
-        </div>
-        <div>
-            <button class="dailyintakebtn"><a href="../templates/stat.html" style="text-decoration: none; color: white;">View Your Weekly Intake</a></button>
-        </div>
+        <p class="water-fact">Did you know that two-thirds of our body weight consists of water?</p>
+        <a href="/stats" class="dailyintakebtn">View Your Weekly Intake</a>
     </div>
-    <div>
+
+    <div class="waterbox">
         <h2>Your Daily Goal</h2>
-        <p> Your goal is to finish <b>1 gallon </b>of water today. You are <b>83%</b> done with your goal!</p>
+        <p>Your goal is to finish <b>1 gallon</b> of water today. You are <b>83%</b> done with your goal!</p>
         <img src="data:image/png;base64,{{ plot_data }}" alt="Pie Chart" class="percentage">
     </div>
-   
 
-    <h2>Weekly Highlights</h2>
     <div class="box">
-        <div class="box2"><div class="val">6</div><div class="random">gallons of water drank this week</div></div>
-        <div class="box2"><div class="val">2</div><div class="random">glasses of water drank today</div></div>
-        <div class="box2"><div class="val">10%</div><div class="random">increase in daily water intake</div></div>
+        <h2>Weekly Highlights</h2>
+        <div class="text-block"><span class="number">6</span><span class="text-content description">gallons of water drank this week</span></div>
+        <div class="text-block"><span class="number">2</span><span class="text-content description">glasses of water drank today</span></div>
+        <div class="text-block"><span class="number">10%</span><span class="text-content description">increase in daily water intake</span></div>
     </div>
-    
 </div>
+
+<footer>
+    &copy; 2024 SIP. All rights reserved.
+</footer>
 </body>
 </html>

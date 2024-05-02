@@ -1,32 +1,45 @@
-#from firebase import firebase
-from flask import render_template
+from flask import render_template, url_for
+from firebase import firebase
+import pandas as pd
 import json
 
-# initialize firebase url
-#firebase = firebase.FirebaseApplication('https://test1-f1e04-default-rtdb.firebaseio.com/', None)
-
-# this function is passed to tutorial.py (main page)
+#firebaseapp = firebase.FirebaseApplication('https://test1-1ab25-default-rtdb.firebaseio.com', None)
+firebaseapp = firebase.FirebaseApplication('https://test1-f1e04-default-rtdb.firebaseio.com/')
 def stats_page():
-    # Logic for the stats page
-    #result = firebase.get('/weights', None)
+    data = firebaseapp.get("/Status", None)
+    print(data)
+    
+    pddata = {"Weight": []}
+    for item, val in data.items():
+        if 'Weight' in val:
+            pddata["Weight"].append(val["Weight"])
+    df = pd.DataFrame(data=pddata)
+    
+    totalc = 0
+    
+    days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    values = []
+    
+    for i in range(0, 69, 10):
+        curr_day = df.iloc[i:i+10]
+        for j in range(len(curr_day)-1):
+            current_value = curr_day.iloc[j]['Weight']
+            if(current_value < 0):
+                current_value = abs(current_value)
+            next_value = curr_day.iloc[j+1]['Weight']
+            if(next_value < 0):
+                next_value = abs(current_value)
+            
+            if(current_value > next_value):
+                difference = current_value - next_value
+                totalc += difference
+                
+        values.append(totalc)   
+        totalc = 0
+    
+    return render_template("layout.html", labels=days, values=values)
 
-    # Define Plot Data 
-    labels = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-    ]
- 
-    data = [0, 10, 15, 8, 22, 18, 25]
- 
-    # Return the components to the HTML template 
-    return render_template('stat.html')
-    #return render_template('stat.html', weights=result)
-    #return 'Stats Page' + str(result)
 
 if __name__ == '__main__':
-    # just for debugging, print stats page info to the console
+    # Run the home page logic if the file is executed directly
     print(stats_page())

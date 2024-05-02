@@ -2,19 +2,24 @@ from flask import Flask
 app = Flask(__name__)
  
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def loading_page():
+    return 'Hi'
  
 @app.route('/home/')
 def home_world():
     import home
     return home.home_page()
- 
+
+
 @app.route('/stats/')
-def stat_page():
+def stats_page():
     import stats
     return stats.stats_page()
 
-if __name__ == '__main__':
-    app.run()
+@app.route('/profile/')
+def profile():
+    import profile
+    return profile.profile_page()
 
+if __name__ == '__main__':
+    app.run(debug=True)
